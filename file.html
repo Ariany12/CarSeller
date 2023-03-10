@@ -1,0 +1,38 @@
+let api = '';
+let div = document.querySelectorAll('.content');
+
+
+let btn = document.querySelector('#btn');
+
+
+btn.addEventListener('click', myFunc);
+
+function myFunc() {
+    let inputLon = document.querySelector('#lon').value;
+    let inputLat = document.querySelector('#lat').value;
+    let inputDate = document.querySelector('#date').value;
+    console.log('your selected options were: ' + inputDate + inputLat + inputLon);
+    fetch(`https://api.nasa.gov/planetary/earth/imagery?lon=${longitude}&lat=${latitude}&date=${selectedDate}&api_key=${api}`)
+    .then((res) => {
+        return res.json();
+    });
+
+}
+
+myFunc();
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My First Webpage!</title>
+
+        <link rel="stylesheet" href="main.css">
+        <script src="index.js" defer></script>
+        
+    </head>
+    <body>
+        <input type="text" id="lon">
+        <input type="text" id="lat">
+        <input type="text" id="date">
+        <button id="btn">Submit</button>
+    </body>
+</html>
